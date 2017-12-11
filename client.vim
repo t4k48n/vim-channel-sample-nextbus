@@ -1,7 +1,13 @@
 let s:delimiter = fnamemodify(".", ":p")[-1:]
 let s:ext = ""
 if has('win32')
-  let s:ext = ".exe"
+  let s:ext = "-windows.exe"
+endif
+if has('unix')
+  let s:ext = "-linux"
+endif
+if has('mac')
+  let s:ext = "-mac"
 endif
 
 let BusServer = expand("<sfile>:p:h") . s:delimiter . "server" .s:ext

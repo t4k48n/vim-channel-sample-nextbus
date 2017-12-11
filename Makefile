@@ -1,8 +1,11 @@
-target = server
-rm = rm
-ifeq ($(OS), Windows_NT)
-target = server.exe
-rm = del
+target := server-linux
+rm := rm
+ifeq ($(shell uname -s),Darwin)
+target := server-mac
+endif
+ifeq ($(OS),Windows_NT)
+target := server-windows.exe
+rm := del
 endif
 
 $(target): server.go
